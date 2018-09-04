@@ -12,15 +12,8 @@
 	    overflow: hidden;
 	    background-color: #333;
 	    font-family: Arial, Helvetica, sans-serif;
-	}
-
-	.navbar a {
-	    float: left;
-	    font-size: 16px;
-	    color: white;
-	    text-align: center;
-	    padding: 20px 70px;
-	    text-decoration: none;
+	    margin:100px;
+	    width:80%;
 	}
 
 	.dropdown {
@@ -41,13 +34,13 @@
 	}
 
 	.navbar a:hover, .dropdown:hover .dropbtn, .dropbtn:focus {
-	    background-color: #3FD3DF;
+	    background-color: #2A91C1;
 	}
 
 	.dropdown-content {
 	    display: none;
 	    position: absolute;
-	    background-color: #f9f9f9;
+	    background-color: #333;
 	    min-width: 160px;
 	    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	    z-index: 1;
@@ -72,9 +65,11 @@
 	
 
 	#signIn,#signUp{
+		position:relative;
+		right:180px;
 		float:right;
 		display:block;
-		padding: 20px 20px;
+		padding: 15px 15px;
 		color:black;
 		text-decoration:none;
 	}
@@ -82,8 +77,11 @@
 		background-color:black;
 		color:white;
 	}
+	#company{
+	
+	}
 	#company, #contact{
-	  width: 450px;
+	  width:50%;
 	  height: 100px;
 	  float: left;
 	  background-color:gray;
@@ -108,33 +106,38 @@
 	
 	<br><br><br><br>
 	
-	<div class="navbar">
+	<div class="navbar" >
   <!-- Round trip button, show round trip menu on click -->
 	  	<div class="dropdown">
-	  		<button class="dropbtn" onclick="roundTripFunc()">Round-Trip
+	  		<button class="dropbtn" id="rtbtn" onclick="roundTripFunc()">Round-Trip
 	  		</button>
 	   <!-- Round trip dropdown menu -->
-	  		<div class="dropdown-content" id="roundTripDropdown" style="width: 192px;height: 250px;background-color: gray;">
+	  		<div class="dropdown-content" id="roundTripDropdown" style="width: 880px;height: 280px;background-color: #2A91C1;">
 		  		<br>
-		  		Round trip
-	  		</div>
+			  	<input id="source" placeholder="FROM" />
+		  		<input id="destination" placeholder="TO" />
+		  		<input class="departDate" placeholder="DEPART" />
+		  		<input id="returnDate" placeholder="RETURN" />
+ 	  		</div>
 	  	</div>
    <!-- One way button, show one way dropdown menu on click -->
 	  <div class="dropdown">
-	  	<button class="dropbtn" onclick="oneWayFunc()">One-Way
+	  	<button class="dropbtn" id="owbtn" onclick="oneWayFunc()">One-Way
 	  	</button>
   <!-- One way menu  -->
-	  	<div class="dropdown-content" id="oneWayDropdown" style="width: 192px;height: 250px;background-color: gray;">
+	  	<div class="dropdown-content" id="oneWayDropdown" style="position:absolute; left:133px; width: 880px;height: 280px;background-color: #2A91C1;">
 		  	<br>
-		  	Order one way
+	  		<input id="source" placeholder="FROM" />
+	  		<input id="destination" placeholder="TO" />
+	  		<input class="departDate" placeholder="DEPART" />
 	  	</div>
 	  </div>
   <!-- My Bookings button, show a dropdown on click -->
 	  <div class="dropdown">
-	    <button class="dropbtn" onclick="myBookingFunc()">My Bookings
+	    <button class="dropbtn" id="mbbtn" onclick="myBookingFunc()">My Bookings
 	  	</button>
   <!-- Dropdown menu on click MyBookings -->
-    	<div class="dropdown-content" id="myBookingsDropdown" style="width: 192px;height: 250px;background-color: gray;">
+    	<div class="dropdown-content" id="myBookingsDropdown" style="position:absolute; left:133px; width: 880px;height: 280px;background-color: #2A91C1;">
     			<br>
 	    		<center style="color:white;">Access a flight booking</center><br>
 	    		<input style="position:relative; left:10px; width:170px;" placeholder="BOOKING REFERENCE"> <br><br>
@@ -144,46 +147,22 @@
   	  </div>   
   <!-- button and dropdown menu for flight status check -->  
   	  <div class="dropdown">
-  	    <button class="dropbtn" onclick="flightStatusFunc()">Flight Status
+  	    <button class="dropbtn" id="fsbtn" onclick="flightStatusFunc()">Flight Status
   		</button>
-  		<div class="dropdown-content" id="flightStatusDropdown" style="width: 192px;height: 250px;background-color: gray;">
+  		<div class="dropdown-content" id="flightStatusDropdown" style="position:absolute; left:133px; width: 880px;height: 280px;background-color: #2A91C1;">
     			<br>
+    			<input id="flightNum" placeholder="FLIGHT NUMBER" />
+    			<input id="date" placeholder="DATE" />
     	</div>
   	  </div>
   	  
   	  
 	 
   	</div>
-<script>
-	function roundTripFunc(){
-		document.getElementById("roundTripDropdown").classList.toggle("show");
-		document.getElementById("oneWayDropdown").classList.remove("show");
-	    document.getElementById("myBookingsDropdown").classList.remove("show");
-		document.getElementById("flightStatusDropdown").classList.remove("show");
-	}
-	function oneWayFunc(){
-		document.getElementById("roundTripDropdown").classList.remove("show");
-		document.getElementById("oneWayDropdown").classList.toggle("show");
-	    document.getElementById("myBookingsDropdown").classList.remove("show");
-		document.getElementById("flightStatusDropdown").classList.remove("show");
-	}
-	function myBookingFunc() {
-		document.getElementById("roundTripDropdown").classList.remove("show");
-		document.getElementById("oneWayDropdown").classList.remove("show");
-	    document.getElementById("myBookingsDropdown").classList.toggle("show");
-		document.getElementById("flightStatusDropdown").classList.remove("show");
-	}
-
-	function flightStatusFunc(){
-		document.getElementById("roundTripDropdown").classList.remove("show");
-		document.getElementById("oneWayDropdown").classList.remove("show");
-	    document.getElementById("myBookingsDropdown").classList.remove("show");
-		document.getElementById("flightStatusDropdown").classList.toggle("show");	}
-</script>
+  	
+  	<hr>
 	
-	<hr>
-	
-	<div>
+	<div style="position:relative; top:250px;">
 		<div id="company" style="padding-left:1em;">Our Company
 			<br>
 			<a class="websites" href="#">About us</a>
@@ -193,6 +172,51 @@
 			Email<a class="websites" href="#"> deason325@outlook.com</a>	
 		</div>
 	</div>
+	
+<script>
+	function roundTripFunc(){
+		document.getElementById("roundTripDropdown").classList.toggle("show");
+		document.getElementById("oneWayDropdown").classList.remove("show");
+	    document.getElementById("myBookingsDropdown").classList.remove("show");
+		document.getElementById("flightStatusDropdown").classList.remove("show");
+		document.getElementById("rtbtn").style.backgroundColor="#2A91C1";
+		document.getElementById("owbtn").style.backgroundColor="#333";
+		document.getElementById("mbbtn").style.backgroundColor="#333";
+		document.getElementById("fsbtn").style.backgroundColor="#333";
+	}
+	function oneWayFunc(){
+		document.getElementById("roundTripDropdown").classList.remove("show");
+		document.getElementById("oneWayDropdown").classList.toggle("show");
+	    document.getElementById("myBookingsDropdown").classList.remove("show");
+		document.getElementById("flightStatusDropdown").classList.remove("show");
+		document.getElementById("rtbtn").style.backgroundColor="#333";
+		document.getElementById("owbtn").style.backgroundColor="#2A91C1";
+		document.getElementById("mbbtn").style.backgroundColor="#333";
+		document.getElementById("fsbtn").style.backgroundColor="#333";
+		
+	}
+	function myBookingFunc() {
+		document.getElementById("roundTripDropdown").classList.remove("show");
+		document.getElementById("oneWayDropdown").classList.remove("show");
+	    document.getElementById("myBookingsDropdown").classList.toggle("show");
+		document.getElementById("flightStatusDropdown").classList.remove("show");
+		document.getElementById("rtbtn").style.backgroundColor="#333";
+		document.getElementById("owbtn").style.backgroundColor="#333";
+		document.getElementById("mbbtn").style.backgroundColor="#2A91C1";
+		document.getElementById("fsbtn").style.backgroundColor="#333";
+	}
+
+	function flightStatusFunc(){
+		document.getElementById("roundTripDropdown").classList.remove("show");
+		document.getElementById("oneWayDropdown").classList.remove("show");
+	    document.getElementById("myBookingsDropdown").classList.remove("show");
+		document.getElementById("flightStatusDropdown").classList.toggle("show");
+		document.getElementById("rtbtn").style.backgroundColor="#333";
+		document.getElementById("owbtn").style.backgroundColor="#333";
+		document.getElementById("mbbtn").style.backgroundColor="#333";
+		document.getElementById("fsbtn").style.backgroundColor="#2A91C1";	}
+</script>
+	
 	
 	
 </body>
